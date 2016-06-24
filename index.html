@@ -1,20 +1,142 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
-
+      <title>Tracker</title>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <h1>Example</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+    <body style="visibility:hidden" class="container-fluid">
+      <div class="main-container hide">
+        <nav class="navbar navbar-inverse">
+          <button id="nav-sign-up" class="btn btn-default" type="submit">Sign-Up</button>
+          <input id="sign-out" class="btn btn-default" type="submit" value="Sign Out">
+          <button id="nav-cp" class="btn btn-default" type="submit">Change Password</button>
+        </nav>
+        <div id="profile-container">
+        </div>
+      </div>
     </body>
+
+<!-- Sign Up Auth Modal -->
+    <div id="open-sign-up" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Add Account</h4>
+          </div>
+          <div class="modal-body">
+            <form id="sign-up">
+              <fieldset>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="credentials[email]" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                </div>
+                <input type="hidden" name="credentials[admin]" value=false>
+                <input type="submit" class="btn btn-default" value="Add Account">
+                <!-- <input class="btn btn-default" type="submit" name='submit' value="Sign Up"> -->
+              </fieldset>
+            </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<!-- Sign In Auth Modal -->
+    <div id="open-sign-in" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">WELCOME!</h4>
+          </div>
+          <div class="modal-body">
+            <form id="sign-in">
+              <fieldset>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="credentials[email]" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
+                </div>
+                <input type="submit" class="btn btn-default" value="Sign In!">
+              </fieldset>
+            </form>
+          </div>
+          <div id="sign-in-footer" class="model-footer hide">
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+<!-- Change Password Auth Modal -->
+        <div id="open-change-password" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Change Password</h4>
+              </div>
+              <div class="modal-body">
+                <form id="change-password">
+                  <fieldset>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="passwords[old]" placeholder="Current Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password"  class="form-control"name="passwords[new]" placeholder="New Password">
+                    </div>
+                    <input type="submit" class="btn btn-default" value="Update Password">
+                  </fieldset>
+                </form>
+              </div>
+              <div id="cp-footer" class="model-footer hide">
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+<!-- Create Profile Modal -->
+
+        <div id="open-create-profile" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Create A New Profile</h4>
+              </div>
+              <div class="modal-body">
+                <form id="create-profile">
+                  <fieldset>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="profile[first_name]" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="profile[last_name]" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="profile[gender]" placeholder="Gender">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="profile[phone_number]" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="profile[github_username]" placeholder="Github Username">
+                    </div>
+                    <div class="form-group">
+                        <input id="create-profile-user-id" type="hidden" class="form-control" name="profile[user_id]" value="">
+                    </div>
+                    <input type="submit" class="btn btn-default" name="Create Profile" value="Create Profile">
+                  </fieldset>
+                </form>
+              </div>
+              <div id="profile-footer" class="model-footer hide">
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 </html>

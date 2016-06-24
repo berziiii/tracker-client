@@ -1,16 +1,16 @@
 'use strict';
 
+// Require files for events to work
 const getFormFields = require('../../../lib/get-form-fields');
-
 const api = require('./api');
 const ui = require('./ui');
 
-
+// Event handlers for authentication
 const onSignUp = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.signUp(data)
-  .done(ui.success)
+  .done(ui.signUpSuccess)
   .fail(ui.failure);
 };
 
@@ -20,7 +20,7 @@ const onSignIn = (event) => {
   let data = getFormFields(event.target);
   api.signIn(data)
   .done(ui.signInSuccess)
-  .fail(ui.failure);
+  .fail(ui.signInFailure);
 };
 
 const onSignOut = (event) => {
@@ -34,15 +34,14 @@ const onChangePassword = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.changePassword(data)
-  .done(ui.success)
-  .fail(ui.failure);
+  .done(ui.changePasswordSuccess)
+  .fail(ui.changePasswordFailure);
 };
-
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
-  $('#sign-out').on('submit', onSignOut);
+  $('#sign-out').on('click', onSignOut);
   $('#change-password').on('submit', onChangePassword);
 };
 
