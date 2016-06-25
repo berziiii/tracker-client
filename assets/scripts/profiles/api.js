@@ -11,7 +11,7 @@ const showProfile = (profile) => {
       },
   });
 };
-// //
+
 const createProfile = (data) => {
   return $.ajax({
     url: app.host + '/profiles',
@@ -20,6 +20,16 @@ const createProfile = (data) => {
         Authorization: 'Token token=' + app.user.token,
       },
     data: data,
+  });
+};
+
+const showPrograms = () => {
+  return $.ajax({
+    url: app.host + '/programs',
+    method: "GET",
+    headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
   });
 };
 // //
@@ -46,5 +56,6 @@ const createProfile = (data) => {
 //
 module.exports = {
   showProfile,
+  showPrograms,
   createProfile
 };

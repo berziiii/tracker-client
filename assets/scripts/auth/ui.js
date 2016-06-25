@@ -2,7 +2,26 @@
 
 const app = require('../app.js');
 const profiles = require('../profiles/events.js');
+const programs = require('../programs/events.js');
 
+// View State Functions
+
+const adminViewState = () => {
+  $('#nav-sign-up').removeClass('hide');
+  $('#open-sign-in').modal('hide');
+  $('#sign-in-footer').addClass('hide');
+  $('.main-container').removeClass('hide');
+};
+
+const userViewState = () => {
+  $('#nav-sign-up').addClass('hide');
+  $('#open-sign-in').modal('hide');
+  $('#sign-in-footer').addClass('hide');
+  $('.main-container').removeClass('hide');
+  $('#programs-container').html('');
+};
+
+// UI functions from api requests
 const success = (data) => {
   if (data) {
     console.log(data);
@@ -16,7 +35,6 @@ const failure = (error) => {
 };
 
 const signUpSuccess = () => {
-  // app.user = data.user;
   $('#open-sign-up').modal('hide');
 };
 
@@ -24,19 +42,14 @@ const signInSuccess = (data) => {
   app.user = data.user;
 
   if (app.user.admin === true) {
-    profiles.userProfile(app.user.profile);
-    $('#nav-sign-up').removeClass('hide');
-    $('#open-sign-in').modal('hide');
-    $('#sign-in-footer').addClass('hide');
-    $('.main-container').removeClass('hide');
+    profiles.adminProfile(app.user.profile);
+    programs.getPrograms();
+    adminViewState();
   } else if (app.user.admin !== true && app.user.profile === null) {
     $('#open-create-profile').modal('show');
   } else {
     profiles.userProfile(app.user.profile);
-    $('#nav-sign-up').addClass('hide');
-    $('#open-sign-in').modal('hide');
-    $('#sign-in-footer').addClass('hide');
-    $('.main-container').removeClass('hide');
+    userViewState();
   }
 };
 
@@ -64,14 +77,6 @@ const changePasswordFailure = () => {
     '<div class="alert alert-danger alert-dismissible">Whoops! Something went wrong. Try resetting your password again.</div>'
   );
 };
-
-
-// const bookListingTemplate = require('../templates/book-listing.handlebars');
-// const books = (books) => {
-//   if (books) {
-//       $('.content').append(bookListingTemplate(books));
-//     }
-// };
 
 module.exports = {
   success,

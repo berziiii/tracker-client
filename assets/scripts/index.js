@@ -13,8 +13,8 @@ $('#nav-sign-up').on('click', function() {
   $('#open-sign-up').modal('show');
 });
 
-$('#nav-cp').on('click', function() {
-  $('#open-change-password').modal('show');
+$('#nav-profile').on('click', function() {
+  $('#open-change-profile').modal('show');
 });
 
 

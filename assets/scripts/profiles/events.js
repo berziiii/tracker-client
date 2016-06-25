@@ -9,9 +9,20 @@ const app = require('../app.js');
 
 // // Event handlers for authentication
 const userProfile = (profile) => {
-  debugger;
   api.showProfile(profile)
   .done(ui.showProfileSuccess)
+  .fail(ui.failure);
+};
+
+const adminProfile = (profile) => {
+  api.showProfile(profile)
+  .done(ui.showAdminSuccess)
+  .fail(ui.failure);
+};
+
+const getPrograms = () => {
+  api.showPrograms()
+  .done(ui.showProgramsSuccess)
   .fail(ui.failure);
 };
 
@@ -25,23 +36,22 @@ const onCreateProfile = (event) => {
   .fail(ui.createProfileFailure);
 };
 
-$('#create-profile').on('submit', onCreateProfile);
-// //
-// // const onSignOut = (event) => {
-// //   event.preventDefault();
-// //   api.signOut()
-// //   .done(ui.signOutSuccess)
-// //   .fail(ui.failure);
-// // };
-// //
+const onUpdateProfile = (event) => {
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.createProfile(data)
+  .done(ui.createProfileSuccess)
+  .fail(ui.createProfileFailure);
+};
 
-// const addHandlers = () => {
-//   $('#create-profile').on('submit', onCreateProfile);
-// };
+$('#create-profile').on('submit', onCreateProfile);
+$('#update-profile').on('submit', onUpdateProfile);
 
 
 module.exports = {
-  // addHandlers,
   userProfile,
-  onCreateProfile
+  adminProfile,
+  getPrograms,
+  onCreateProfile,
+  onUpdateProfile
 };

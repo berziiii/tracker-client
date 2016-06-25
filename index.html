@@ -8,11 +8,13 @@
     <body style="visibility:hidden" class="container-fluid">
       <div class="main-container hide">
         <nav class="navbar navbar-inverse">
-          <button id="nav-sign-up" class="btn btn-default" type="submit">Sign-Up</button>
           <input id="sign-out" class="btn btn-default" type="submit" value="Sign Out">
-          <button id="nav-cp" class="btn btn-default" type="submit">Change Password</button>
+          <button id="nav-profile" class="btn btn-default" type="submit">Profile</button>
+          <button id="nav-sign-up" class="btn btn-default" type="submit">Add Account</button>
         </nav>
         <div id="profile-container">
+        </div>
+        <div id="programs-container">
         </div>
       </div>
     </body>
@@ -74,15 +76,21 @@
     </div><!-- /.modal -->
 
 
-<!-- Change Password Auth Modal -->
-        <div id="open-change-password" class="modal fade" tabindex="-1" role="dialog">
+<!-- Change Profile Auth Modal -->
+        <div id="open-change-profile" class="modal fade" tabindex="-1" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Change Password</h4>
+                <h4 class="modal-title">Update Profile Information</h4>
               </div>
               <div class="modal-body">
+                <form id="update-profile">
+                  <fieldset>
+                    <div id="update-profile-form">
+                    </div>
+                  </fieldset>
+                </form>
                 <form id="change-password">
                   <fieldset>
                     <div class="form-group">

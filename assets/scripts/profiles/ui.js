@@ -2,18 +2,34 @@
 
 // const profiles = require('./events.js');
 const profileTemplate = require('../templates/profiles/profile.handlebars');
+const profileUpdateTemplate = require('../templates/profiles/updateProfile.handlebars');
+const adminTemplate = require('../templates/profiles/admin.handlebars');
+// const programTemplate = require('../templates/programs/programs.handlebars');
 
-const showProfileSuccess = (profile) => {
-  $('#profile-container').html(profileTemplate(profile));
-};
-
-const createProfileSuccess = (profile) => {
+// View State Functions
+const userViewState = (profile) => {
   $('#open-create-profile').modal('hide');
   $('#profile-footer').addClass('hide');
   $('#open-sign-in').modal('hide');
   $('.main-container').removeClass('hide');
   $('#nav-sign-up').addClass('hide');
   $('#profile-container').html(profileTemplate(profile));
+};
+
+// UI for api requests
+
+const showProfileSuccess = (profile) => {
+  $('#profile-container').html(profileTemplate(profile));
+  $('#update-profile-form').html(profileUpdateTemplate(profile));
+};
+
+const showAdminSuccess = (profile) => {
+  $('#profile-container').html(adminTemplate(profile));
+  $('#update-profile-form').html(profileUpdateTemplate(profile));
+};
+
+const createProfileSuccess = (profile) => {
+  userViewState(profile);
 };
 
 const createProfileFailure = (error) => {
@@ -48,6 +64,7 @@ module.exports = {
   success,
   failure,
   showProfileSuccess,
+  showAdminSuccess,
   createProfileSuccess,
   createProfileFailure
 };
