@@ -1,0 +1,18 @@
+<tr>
+  <th scope="row"></th>
+  <td>{{first_name}}</td>
+  <td>{{last_name}}</td>
+  <td>{{gender}}</td>
+  <td>{{github_username}}</td>
+  <td>{{phone_number}}</td>
+  <td>
+    <select class="form-control">
+        <option value="Enrolled">Enrolled</option>
+        <option value="Withdraw">Withdraw</option>
+        <option value="Successful Completion">Successful Completion</option>
+        <option value="Did Not Succssfully Complete">Did Not Succssfully Complete</option>
+      </select>
+    </td>
+    <td><button class="btn btn-default" data-id={{id}}>Update Status</button></td>
+    <td><button class="btn btn-default" data-id={{id}}>Remove</button></td>
+</tr>

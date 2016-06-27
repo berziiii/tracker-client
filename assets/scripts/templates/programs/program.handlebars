@@ -5,9 +5,8 @@
     <h5>Market: {{market}}</h5>
     <h5>Start Date: {{start_date}}</h5>
     <h5>End Date: {{end_date}}</h5>
-    <button class="btn btn-default" data-id={{id}} id="cohort-enrollments">Enrollments</button>
+    <div id="show-enrollments">
+    </div>
+    <button class="add-profile-button btn btn-default" data-id={{id}}>Add Profile</button>
   </div>
-  {{#profiles}}
-    <span>{{first_name}} {{last_name}}</span>
-  {{/profiles}}
 {{/cohorts}}

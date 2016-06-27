@@ -1,12 +1,23 @@
 'use strict';
 
-const cohortTemplate = require('../templates/programs/cohorts.handlebars');
+const cohortTemplate = require('../templates/cohorts/cohorts.handlebars');
+const profileEvents = require('../profiles/events.js');
+// const addProfileToCohortTemplate = require('../templates/cohorts/cohort-modal.handlebars');
 
 // UI for api requests
 
 const showCohortsSuccess = (cohorts) => {
-  $('#cohorts-container').html(cohortTemplate(cohorts));
+  profileEvents.allProfiles();
+  $('#show-enrollments').html(cohortTemplate(cohorts));
+  $('#delete-account').on('click', function () {
+    $('#open-remove-account').modal('show');
+  });
 };
+//
+// const getCohortsSuccess = (cohorts) => {
+//   $('#add-profile').html(addProfileToCohortTemplate(cohorts));
+// };
+
 
 const success = (data) => {
   if (data) {
@@ -20,16 +31,9 @@ const failure = (error) => {
   console.error(error);
 };
 
-
-// const bookListingTemplate = require('../templates/book-listing.handlebars');
-// const books = (books) => {
-//   if (books) {
-//       $('.content').append(bookListingTemplate(books));
-//     }
-// };
-
 module.exports = {
   success,
   failure,
-  showCohortsSuccess
+  showCohortsSuccess,
+  // getCohortsSuccess,
 };

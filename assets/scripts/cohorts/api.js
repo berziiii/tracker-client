@@ -13,5 +13,5 @@ const showCohorts = () => {
 };
 
 module.exports = {
-  showCohorts
+  showCohorts,
 };

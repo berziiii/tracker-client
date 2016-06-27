@@ -1,6 +1,7 @@
 'use strict';
 
 const authEvents = require('./auth/events.js');
+// const cohortEvents = require('./cohorts/events.js');
 // const profileEvents = require('./profiles/events.js');
 // user require with a reference to bundle the file and use it in this file
 // var example = require('./example');
@@ -17,10 +18,8 @@ $('#nav-profile').on('click', function() {
   $('#open-change-profile').modal('show');
 });
 
-
 $(() => {
   authEvents.addHandlers();
-  // profileEvents.addHandlers();
   $('body').css({"visibility": "visible"});
   $('#open-sign-in').modal('show');
 });

@@ -1,11 +1,9 @@
 'use strict';
-//
-// // Require files for events to work
+
+// Require files for events to work
 // const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
-// const app = require('../app.js');
-// const authUi = require('../auth/ui');
 
 const getCohorts = () => {
   api.showCohorts()
@@ -13,7 +11,13 @@ const getCohorts = () => {
   .fail(ui.failure);
 };
 
+const getAllCohorts = () => {
+  api.showCohorts()
+  .done(ui.getCohortsSuccess)
+  .fail(ui.failure);
+};
 
 module.exports = {
   getCohorts,
+  getAllCohorts,
 };

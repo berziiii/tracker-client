@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Gender</th>
+      <th>Github Username</th>
+      <th>Phone Number</th>
+      <th>Status</th>
+      <th></th>
+      <th>Remove Account</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#cohorts}}
+      {{#profiles}}
+        {{> cohort}}
+      {{/profiles}}
+    {{/cohorts}}
+  </tbody>
+</table>

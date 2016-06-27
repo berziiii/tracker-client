@@ -20,11 +20,17 @@ const adminProfile = (profile) => {
   .fail(ui.failure);
 };
 
-const getPrograms = () => {
-  api.showPrograms()
-  .done(ui.showProgramsSuccess)
+const allProfiles = () => {
+  api.getAllProfiles()
+  .done(ui.sort)
   .fail(ui.failure);
 };
+
+// const getPrograms = () => {
+//   api.showPrograms()
+//   .done(ui.showProgramsSuccess)
+//   .fail(ui.failure);
+// };
 
 const onCreateProfile = (event) => {
   event.preventDefault();
@@ -51,7 +57,8 @@ $('#update-profile').on('submit', onUpdateProfile);
 module.exports = {
   userProfile,
   adminProfile,
-  getPrograms,
+  allProfiles,
+  // getPrograms,
   onCreateProfile,
-  onUpdateProfile
+  onUpdateProfile,
 };

@@ -23,39 +23,30 @@ const createProfile = (data) => {
   });
 };
 
-const showPrograms = () => {
+const getAllProfiles = () => {
   return $.ajax({
-    url: app.host + '/programs',
+    url: app.host + '/profiles',
     method: "GET",
     headers: {
         Authorization: 'Token token=' + app.user.token,
       },
   });
 };
-// //
-// // const signOut = () => {
-// //   return $.ajax({
-// //     url: app.host + '/sign-out/' + app.user.id,
-// //     method: "DELETE",
-// //     headers: {
-// //       Authorization: 'Token token=' + app.user.token,
-// //     },
-// //   });
-// // };
-// //
-// // const changePassword = (data) => {
-// //   return $.ajax({
-// //     url: app.host + '/change-password/' + app.user.id,
-// //     method: "PATCH",
-// //     headers: {
-// //       Authorization: 'Token token=' + app.user.token,
-// //     },
-// //     data: data,
-// //   });
-// // };
+
 //
+// const showPrograms = () => {
+//   return $.ajax({
+//     url: app.host + '/programs',
+//     method: "GET",
+//     headers: {
+//         Authorization: 'Token token=' + app.user.token,
+//       },
+//   });
+// };
+
 module.exports = {
   showProfile,
-  showPrograms,
-  createProfile
+  // showPrograms,
+  createProfile,
+  getAllProfiles,
 };

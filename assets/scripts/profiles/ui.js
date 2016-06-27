@@ -4,7 +4,8 @@
 const profileTemplate = require('../templates/profiles/profile.handlebars');
 const profileUpdateTemplate = require('../templates/profiles/updateProfile.handlebars');
 const adminTemplate = require('../templates/profiles/admin.handlebars');
-// const programTemplate = require('../templates/programs/programs.handlebars');
+const allProfilesTemplate = require('../templates/profiles/addProfilesTemplate.handlebars');
+// const cohortsEvents = require('../cohorts/events.js');
 
 // View State Functions
 const userViewState = (profile) => {
@@ -40,6 +41,29 @@ const createProfileFailure = (error) => {
   console.log(error);
 };
 
+const getProfilesSuccess = (list) => {
+
+  $('#add-profile').html(allProfilesTemplate(list));
+  
+};
+
+const sort = (data) => {
+  let list = data;
+  list.profiles.sort(function(a, b) {
+    let nameA = a.first_name.toUpperCase(); // ignore upper and lowercase
+    let nameB = b.first_name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
+  });
+  getProfilesSuccess(list);
+};
+
 const success = (data) => {
   if (data) {
     console.log(data);
@@ -52,13 +76,10 @@ const failure = (error) => {
   console.error(error);
 };
 
-
-// const bookListingTemplate = require('../templates/book-listing.handlebars');
-// const books = (books) => {
-//   if (books) {
-//       $('.content').append(bookListingTemplate(books));
-//     }
-// };
+// Click Handlers for profiles
+// $('#add-profile-to-cohort').on('click', function() {
+//   $('#open-add-profile').modal('show');
+// });
 
 module.exports = {
   success,
@@ -66,5 +87,7 @@ module.exports = {
   showProfileSuccess,
   showAdminSuccess,
   createProfileSuccess,
-  createProfileFailure
+  createProfileFailure,
+  getProfilesSuccess,
+  sort,
 };

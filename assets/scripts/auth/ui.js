@@ -63,6 +63,7 @@ const signInFailure = () => {
 const signOutSuccess = () => {
   $('#open-sign-in').modal('show');
   $('.main-container').addClass('hide');
+  $('#programs-container').html('');
   app.user = null;
 };
 
