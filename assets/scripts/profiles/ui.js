@@ -6,6 +6,8 @@ const profileUpdateTemplate = require('../templates/profiles/updateProfile.handl
 const adminTemplate = require('../templates/profiles/admin.handlebars');
 const allProfilesTemplate = require('../templates/profiles/addProfilesTemplate.handlebars');
 // const cohortsEvents = require('../cohorts/events.js');
+const api = require('./api.js');
+const app = require('../app.js');
 
 // View State Functions
 const userViewState = (profile) => {
@@ -22,6 +24,7 @@ const userViewState = (profile) => {
 const showProfileSuccess = (profile) => {
   $('#profile-container').html(profileTemplate(profile));
   $('#update-profile-form').html(profileUpdateTemplate(profile));
+  $('#open-change-profile').modal('hide');
 };
 
 const showAdminSuccess = (profile) => {
@@ -41,10 +44,21 @@ const createProfileFailure = (error) => {
   console.log(error);
 };
 
-const getProfilesSuccess = (list) => {
+const updateProfileFailure = () => {
+  $('#cp-footer').html(
+    '<div class="alert alert-danger alert-dismissible">Whoops! Something went wrong. Try Updateing your profile again.</div>'
+  );
+};
 
+const updateProfileSuccess = () => {
+  let profile = app.user.profile;
+  api.showProfile(profile)
+  .done(showProfileSuccess)
+  .fail(updateProfileFailure);
+};
+
+const getProfilesSuccess = (list) => {
   $('#add-profile').html(allProfilesTemplate(list));
-  
 };
 
 const sort = (data) => {
@@ -90,4 +104,6 @@ module.exports = {
   createProfileFailure,
   getProfilesSuccess,
   sort,
+  updateProfileSuccess,
+  updateProfileFailure
 };

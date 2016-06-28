@@ -33,20 +33,20 @@ const getAllProfiles = () => {
   });
 };
 
-//
-// const showPrograms = () => {
-//   return $.ajax({
-//     url: app.host + '/programs',
-//     method: "GET",
-//     headers: {
-//         Authorization: 'Token token=' + app.user.token,
-//       },
-//   });
-// };
+const updateProfile = (data) => {
+  return $.ajax({
+    url: app.host + '/profiles/' + app.user.id,
+    method: "PATCH",
+    headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+    data: data,
+  });
+};
 
 module.exports = {
   showProfile,
-  // showPrograms,
+  updateProfile,
   createProfile,
   getAllProfiles,
 };

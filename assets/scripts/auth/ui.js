@@ -19,6 +19,7 @@ const userViewState = () => {
   $('#sign-in-footer').addClass('hide');
   $('.main-container').removeClass('hide');
   $('#programs-container').html('');
+  $('#add-enrollee').addClass('hide');
 };
 
 // UI functions from api requests
@@ -68,7 +69,7 @@ const signOutSuccess = () => {
 };
 
 const changePasswordSuccess = () => {
-  $('#open-change-password').modal('hide');
+  $('#open-change-profile').modal('hide');
   $('#cp-footer').addClass('hide');
 };
 

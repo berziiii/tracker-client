@@ -10,7 +10,8 @@
         <nav class="navbar navbar-inverse">
           <input id="sign-out" class="btn btn-default" type="submit" value="Sign Out">
           <button id="nav-profile" class="btn btn-default" type="submit">Profile</button>
-          <button id="nav-sign-up" class="btn btn-default" type="submit">Add Account</button>
+          <button id="nav-sign-up" class="btn btn-default" type="submit">Create Account</button>
+          <button id="add-enrollee" class="btn btn-default" type="submit">Add Enrollee</button>
         </nav>
         <div id="profile-container">
         </div>
@@ -25,7 +26,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Add Account</h4>
+            <h4 class="modal-title">Create New Account</h4>
           </div>
           <div class="modal-body">
             <form id="sign-up">
@@ -156,7 +157,14 @@
                 <h4 class="modal-title">Add Profile to Cohort</h4>
               </div>
               <div class="modal-body">
-                <form id="add-profile">
+                <form id="add-enrollee-to-cohort">
+                  <fieldset>
+                    <div id="cohort-list-for-profile">
+                    </div>
+                    <div id="add-profile">
+                    </div>
+                    <input type='submit' class="btn btn-default" value="Add Enrollee">
+                  </fieldset>
                 </form>
               </div>
             </div><!-- /.modal-content -->

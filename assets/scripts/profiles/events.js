@@ -26,12 +26,6 @@ const allProfiles = () => {
   .fail(ui.failure);
 };
 
-// const getPrograms = () => {
-//   api.showPrograms()
-//   .done(ui.showProgramsSuccess)
-//   .fail(ui.failure);
-// };
-
 const onCreateProfile = (event) => {
   event.preventDefault();
   let user_id = app.user.id;
@@ -45,9 +39,10 @@ const onCreateProfile = (event) => {
 const onUpdateProfile = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
-  api.createProfile(data)
-  .done(ui.createProfileSuccess)
-  .fail(ui.createProfileFailure);
+  debugger;
+  api.updateProfile(data)
+  .done(ui.updateProfileSuccess)
+  .fail(ui.updateProfileFailure);
 };
 
 $('#create-profile').on('submit', onCreateProfile);

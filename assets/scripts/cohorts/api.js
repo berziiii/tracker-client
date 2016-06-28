@@ -12,6 +12,17 @@ const showCohorts = () => {
   });
 };
 
+const getCohortProfiles = (cohort_id) => {
+  return $.ajax({
+    url: app.host + '/cohorts/' + cohort_id,
+    method: "GET",
+    headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  });
+};
+
 module.exports = {
   showCohorts,
+  getCohortProfiles
 };

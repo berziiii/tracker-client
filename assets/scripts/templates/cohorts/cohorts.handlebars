@@ -1,22 +1,55 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Gender</th>
-      <th>Github Username</th>
-      <th>Phone Number</th>
-      <th>Status</th>
-      <th></th>
-      <th>Remove Account</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#cohorts}}
-      {{#profiles}}
-        {{> cohort}}
-      {{/profiles}}
-    {{/cohorts}}
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Github Username</th>
+          <th>Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#profiles}}
+          <tr>
+            <th scope="row"></th>
+            <td>{{first_name}}</td>
+            <td>{{last_name}}</td>
+            <td>{{gender}}</td>
+            <td>{{github_username}}</td>
+            <td>{{phone_number}}</td>
+            <td>
+              <select class="form-control">
+                <option value="Enrolled">Enrolled</option>
+                <option value="Withdraw">Withdraw</option>
+                <option value="Successful Completion">Successful Completion</option>
+                <option value="Did Not Succssfully Complete">Did Not Succssfully Complete</option>
+              </select>
+            </td>
+          </tr>
+        {{/profiles}}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Remove Enrollee</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#enrollments}}
+          <tr>
+            <th scope="row"></th>
+            <td><button class="btn btn-default" data-id={{id}}>Update Status</button></td>
+            <td><button class="btn btn-default remove-enrollee" data-id={{id}}>Remove</button></td>
+          </tr>
+        {{/enrollments}}
+      </tbody>
+    </table>
+  </div>
+</div>

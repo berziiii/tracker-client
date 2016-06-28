@@ -1,22 +1,43 @@
 'use strict';
 
+const api = require('./api.js');
 const cohortTemplate = require('../templates/cohorts/cohorts.handlebars');
 const profileEvents = require('../profiles/events.js');
-// const addProfileToCohortTemplate = require('../templates/cohorts/cohort-modal.handlebars');
+const cohortListTemplate = require('../templates/cohorts/cohortList.handlebars');
+// const enrollmentEvents = require('../enrollments/event.js');
+
+const getCohortsProfilesSuccess = (data) => {
+  let cohort = data.cohort;
+  let cohort_id = data.cohort.id;
+  $('[data-id=' + cohort_id + ']').siblings('.show-enrollments').html(cohortTemplate(cohort));
+  $('.remove-enrollee').on('click', function() {
+    let profile_id = $(event.target).attr('data-id');
+    // enrollmentEvents.removeEnrollee(cohort_id, profile_id);
+  });
+};
+
+const showEnrollments = (event) => {
+  event.preventDefault();
+  let cohort_id = $(event.target).attr('data-id');
+  api.getCohortProfiles(cohort_id)
+  .done(getCohortsProfilesSuccess)
+  .fail();
+};
 
 // UI for api requests
 
-const showCohortsSuccess = (cohorts) => {
+const showCohortsSuccess = (data) => {
+  let cohortList = data;
   profileEvents.allProfiles();
-  $('#show-enrollments').html(cohortTemplate(cohorts));
-  $('#delete-account').on('click', function () {
-    $('#open-remove-account').modal('show');
-  });
+  $('.enrollments').on('click', showEnrollments);
+  $('.show-enrollments').html('');
+  // $('.show-enrollments').html(cohortTemplate(cohortList));
+  $('#cohort-list-for-profile').html(cohortListTemplate(cohortList));
+  // $('#delete-account').on('click', function () {
+  //   $('#open-remove-account').modal('show');
+  // });
 };
 //
-// const getCohortsSuccess = (cohorts) => {
-//   $('#add-profile').html(addProfileToCohortTemplate(cohorts));
-// };
 
 
 const success = (data) => {
@@ -35,5 +56,5 @@ module.exports = {
   success,
   failure,
   showCohortsSuccess,
-  // getCohortsSuccess,
+  getCohortsProfilesSuccess
 };
