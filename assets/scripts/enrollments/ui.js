@@ -9,7 +9,7 @@ const failure = (error) => {
 };
 
 const addEnrolleeSuccess = () => {
-  cohortEvents.getCohorts();
+  // cohortEvents.getCohorts();
   $('#open-add-profile').modal('hide');
 };
 
