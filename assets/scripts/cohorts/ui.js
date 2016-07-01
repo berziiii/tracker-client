@@ -4,15 +4,16 @@ const api = require('./api.js');
 const cohortTemplate = require('../templates/cohorts/cohorts.handlebars');
 const profileEvents = require('../profiles/events.js');
 const cohortListTemplate = require('../templates/cohorts/cohortList.handlebars');
-// const enrollmentEvents = require('../enrollments/event.js');
+const enrollmentEvents = require('../enrollments/events.js');
 
 const getCohortsProfilesSuccess = (data) => {
   let cohort = data.cohort;
   let cohort_id = data.cohort.id;
+  $('.show-enrollments').html(' ');
   $('[data-id=' + cohort_id + ']').siblings('.show-enrollments').html(cohortTemplate(cohort));
   $('.remove-enrollee').on('click', function() {
     let profile_id = $(event.target).attr('data-id');
-    // enrollmentEvents.removeEnrollee(cohort_id, profile_id);
+    enrollmentEvents.findEnrollee(cohort_id, profile_id);
   });
 };
 

@@ -13,9 +13,11 @@ const onAddEnrollee = (event) => {
   .fail(ui.addEnrolleeFailure);
 };
 
-// const removeEnrollee = (cohort_id, profile_id) => {
-//
-// };
+const findEnrollee = (cohort_id, profile_id) => {
+  api.findEnrollee(cohort_id, profile_id)
+  .done(ui.findEnrolleeSuccess)
+  .fail(ui.failure);
+};
 
 const addHandlers = () => {
   $('#add-enrollee-to-cohort').on('submit', onAddEnrollee);
@@ -23,5 +25,6 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers,
-  onAddEnrollee
+  onAddEnrollee,
+  findEnrollee
 };
