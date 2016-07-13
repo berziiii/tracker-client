@@ -82,17 +82,19 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Update Profile Information</h4>
+                <h4 class="modal-title">Profile Information</h4>
               </div>
               <div class="modal-body">
                 <form id="update-profile">
                   <fieldset>
+                    <h5> Update Profile Information: </h5>
                     <div id="update-profile-form">
                     </div>
                   </fieldset>
                 </form>
                 <form id="change-password">
                   <fieldset>
+                    <h5> Update Password: </h5>
                     <div class="form-group">
                         <input type="password" class="form-control" name="passwords[old]" placeholder="Current Password">
                     </div>
@@ -102,6 +104,22 @@
                     <input type="submit" class="btn btn-default" value="Update Password">
                   </fieldset>
                 </form>
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="home">...</div>
+                      <div role="tabpanel" class="tab-pane" id="profile">...</div>
+                      <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                      <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                    </div>
+                  </div>
               </div>
               <div id="cp-footer" class="model-footer hide">
               </div>
@@ -154,15 +172,18 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Add Profile to Cohort</h4>
+                <h4 class="modal-title">Add Enrollee to a Cohort</h4>
               </div>
               <div class="modal-body">
                 <form id="add-enrollee-to-cohort">
                   <fieldset>
+                    <h5> Choose Cohort: </h5>
                     <div id="cohort-list-for-profile">
                     </div>
+                    <h5> Choose Profile: </h5>
                     <div id="add-profile">
                     </div>
+                    <h3> </h3>
                     <input type='submit' class="btn btn-default" value="Add Enrollee">
                   </fieldset>
                 </form>

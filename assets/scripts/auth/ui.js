@@ -11,6 +11,7 @@ const adminViewState = () => {
   $('#open-sign-in').modal('hide');
   $('#sign-in-footer').addClass('hide');
   $('.main-container').removeClass('hide');
+  $('#add-enrollee').removeClass('hide');
 };
 
 const userViewState = () => {

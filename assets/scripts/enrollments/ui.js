@@ -1,8 +1,8 @@
 'use strict';
 
-const cohortEvents = require('../cohorts/events.js');
+// const cohortEvents = require('../cohorts/events.js');
 const api = require('./api.js');
-const cohortUi = require('../cohorts/ui.js');
+// const cohortUi = require('../cohorts/ui.js');
 
 const failure = (error) => {
   console.error(error);

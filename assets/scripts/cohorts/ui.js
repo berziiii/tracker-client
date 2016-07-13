@@ -9,7 +9,7 @@ const enrollmentEvents = require('../enrollments/events.js');
 const getCohortsProfilesSuccess = (data) => {
   let cohort = data.cohort;
   let cohort_id = data.cohort.id;
-  $('.show-enrollments').html(' ');
+  // $('.show-enrollments').html(' ');
   $('[data-id=' + cohort_id + ']').siblings('.show-enrollments').html(cohortTemplate(cohort));
   $('.remove-enrollee').on('click', function() {
     let profile_id = $(event.target).attr('data-id');
